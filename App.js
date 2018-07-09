@@ -1,23 +1,42 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, Image, Button, Alert } from 'react-native';
 
-export default class App extends React.Component {
+class Player extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+        <Text>Name: {this.props.name} Goals: {this.props.goals}</Text>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default class App extends React.Component {
+  render() {
+
+    let pic = {
+      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
+    };
+
+    function onPressLearnMore() {
+      Alert.alert('You tapped the button!');
+    }
+
+    return (
+      <View style={{alignItems: 'center'}}>
+        <Text>Hello World!</Text>
+
+        <Image source={pic} style={{width: 193, height: 110}}/>
+
+        <Player name='Messi' goals='56'/>
+        <Player name='Ronaldo' goals='84'/>
+        <Player name='Sunil Chettri' goals='56'/>
+
+        <Button
+            onPress={onPressLearnMore}
+            title="Learn More"
+            color="#841584"
+            accessibilityLabel="Learn more about this purple button"
+        />
+      </View>
+    );
+  }
+}
